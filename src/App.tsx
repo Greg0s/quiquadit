@@ -5,8 +5,14 @@ import "@mantine/core/styles.css";
 
 import { Button, MantineProvider, Title, Text, Flex } from "@mantine/core";
 
+type Quote = {
+  quote: string;
+  author: string;
+  context: string;
+};
+
 function App() {
-  const [quotes, setQuotes] = useState([]);
+  const [quotes, setQuotes] = useState<Quote[]>([]);
   const [index, setIndex] = useState(0);
   const [showAuthor, setShowAuthor] = useState(false);
   const maxBackgrounds = 5;
@@ -64,7 +70,7 @@ function App() {
       >
         <header className="app-header">
           {/* <Image src={logo} alt="Logo" className="logo" /> */}
-          <Title className="pinyon-script" order={3}>
+          <Title className="kaushan-font " order={3}>
             citationsinspirantes.com
           </Title>
           <Text className="app-header-subtitle" size="sm">
@@ -80,11 +86,11 @@ function App() {
             // style={{ minHeight: "60vh" }}
           > */}
           <div style={{ textAlign: "center" }} className="quote">
-            <Title className="pinyon-script" order={3} className="quote-text">
+            <Title className="kaushan-font quote-text" order={3}>
               “{current.quote}”
             </Title>
             <Text
-              weight={500}
+              fw={500}
               className="quote-context"
               style={{
                 minHeight: "1.5em", // hauteur minimale pour éviter le décalage
