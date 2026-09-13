@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, access } from "node:fs/promises";
 import { webcrypto } from "node:crypto";
 
 // webcrypto's methods need `webcrypto` as their receiver, so don't destructure them.
@@ -33,6 +33,22 @@ async function deriveKey(password, salt) {
 }
 
 async function main() {
+  // src/quotes.json is gitignored (private source). In CI it isn't checked
+  // out, so if the already-encrypted output is present, reuse it as-is.
+  const sourceExists = await access(SOURCE_PATH).then(() => true, () => false);
+  if (!sourceExists) {
+    const outputExists = await access(OUTPUT_PATH).then(() => true, () => false);
+    if (outputExists) {
+      console.log(
+        `${SOURCE_PATH.pathname} introuvable, ${OUTPUT_PATH.pathname} déjà présent : encryption ignorée.`
+      );
+      return;
+    }
+    throw new Error(
+      `${SOURCE_PATH.pathname} introuvable et aucun ${OUTPUT_PATH.pathname} existant à réutiliser.`
+    );
+  }
+
   const quotesJson = await readFile(SOURCE_PATH, "utf-8");
   JSON.parse(quotesJson); // fail fast if the private source file is malformed
 

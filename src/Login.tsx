@@ -29,7 +29,7 @@ function Login({ onSuccess }: LoginProps) {
     event.preventDefault();
     setSubmitting(true);
     try {
-      const response = await fetch("/quotes.enc.json");
+      const response = await fetch(`${import.meta.env.BASE_URL}quotes.enc.json`);
       if (!response.ok) throw new Error("quotes.enc.json fetch failed");
       const payload = await response.json();
       const quotes = await decryptQuotes(password, payload);
