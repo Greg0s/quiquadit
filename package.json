@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "pnpm run encrypt-quotes && vite",
+    "build": "pnpm run encrypt-quotes && tsc -b && vite build",
+    "encrypt-quotes": "node scripts/encrypt-quotes.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
