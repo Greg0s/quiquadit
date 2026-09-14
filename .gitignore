@@ -1,5 +1,8 @@
 # Database
-/src/quotes.json
+/src/quotes.csv
+
+# Secrets
+.env
 
 # Logs
 logs
