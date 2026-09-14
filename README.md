@@ -1,8 +1,8 @@
-# Qui qu'a dit ? (quiquadit)
+# Quiquadit ?
 
-Un jeu de devinette basé sur des citations : on affiche une citation, on devine qui l'a dite, puis on révèle l'auteur. L'idée est de le remplir avec les phrases cultes de vos proches, amis ou collègues plutôt que des citations de célébrités — le fun vient de reconnaître (ou pas) qui a dit quoi dans votre bande.
+Un jeu de devinette basé sur des citations : on affiche une citation, on devine qui l'a dite, puis on révèle l'auteur. L'idée est de le remplir avec les phrases cultes de vos proches, amis ou collègues et d'essayer de deviner qui à dit quoi.
 
-Le jeu est protégé par un mot de passe : vos citations sont chiffrées et ne sont déchiffrées que dans le navigateur de la personne qui saisit le bon mot de passe. Vous pouvez donc déployer le site publiquement (par exemple sur GitHub Pages) sans exposer vos citations à n'importe qui.
+Le jeu est protégé par un mot de passe : vos citations sont chiffrées et ne sont déchiffrées que dans le navigateur de la personne qui doit saisir le bon mot de passe. Vous pouvez donc déployer le site publiquement (par exemple sur GitHub Pages) sans exposer vos citations à n'importe qui.
 
 ## Comment ça marche
 
@@ -18,8 +18,8 @@ Créez un fichier `src/quotes.csv` avec trois colonnes : `quote`, `author`, `con
 
 ```csv
 quote,author,context
-"Le wifi de la maison, c'est comme la vérité : ça finit toujours par sortir.","Papi Robert",""
-"J'ai pas raté le dessert, j'ai juste anticipé le repas suivant.","Tata Josiane","(pendant les fêtes de Noël)"
+"Je manque tellement de sommeil que cette nuit j'ai rêvé que je dormais.","Mon collègue",""
+"Vous me suivez ? Parce que moi je me suis plus du tout.","Jeanjean","à Noël pendant le repas"
 ```
 
 - **quote** : le texte de la citation.
@@ -48,7 +48,7 @@ Puis éditez `.env` :
 QUOTES_PASSWORD=votre-mot-de-passe
 ```
 
-C'est ce mot de passe que vous partagerez ensuite avec vos proches (par SMS, message privé...) pour qu'ils puissent accéder au jeu.
+C'est ce mot de passe que vous partagerez ensuite avec vos proches pour qu'ils puissent accéder au jeu.
 
 `.env` n'est jamais commité (il est dans `.gitignore`) : votre mot de passe reste uniquement sur votre machine. Sans `QUOTES_PASSWORD` défini, `pnpm run encrypt-quotes` refuse de chiffrer et affiche une erreur.
 
